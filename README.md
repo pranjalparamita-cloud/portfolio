@@ -6,13 +6,15 @@ A cinematic, Netflix-inspired single-page portfolio built for **Streamlit Commun
 
 - Animated hero with portrait, live status card and floating badges
 - Interactive skill tabs (Languages & Data, AI/ML, BI & Tools, Human Skills)
-- Four project cards with expandable "project notes" modal
+- Dedicated **Training Program on Machine Learning & Its Concepts** showcase with 4 workshop photos and a full-screen lightbox viewer
+- Four project cards with clickable "Project notes" (no arrow clutter)
 - Experience + education timeline
-- Filterable certificate wall with full previews and PDF downloads
-- Interview cheat sheet (conversation starters + myth-vs-reality accordion)
+- Certificate wall: clicking any certificate opens its PDF; "Quick preview" opens a large on-page preview; "PDF ↓" downloads the original
+- Clickable conversation-starter chips and floating hero badges that jump to the right skill/project
+- Interview cheat sheet with myth-vs-reality accordion
 - Playful extras: brag meter, fun facts, hire-o-meter, confetti, easter egg
 - Day/night theme toggle and responsive layouts
-- Downloadable résumé and one-click email/LinkedIn/GitHub/phone links
+- Every résumé button downloads the résumé; email/LinkedIn/GitHub/phone links open directly
 
 ## Run locally
 

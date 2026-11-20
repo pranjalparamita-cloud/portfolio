@@ -15,16 +15,54 @@ git branch -M main
 git push -u origin main
 ```
 
-If you already have a repo, skip `git init` and just replace the remote line.
+If you downloaded the ZIP, you **must** run `git init` first — the ZIP does not include the `.git` folder.
 
-> The repository already contains a local commit, so if you cloned/downloaded this exact folder you only need to add the remote and push.
+### Windows PowerShell (your exact repo)
+
+Open PowerShell in the downloaded folder and run **one line at a time**:
+
+```powershell
+cd "C:\Users\ashib\Downloads\pranjal-portfolio"
+git init
+git config user.name "Pranjal Paramita Sahu"
+git config user.email "pranjalparamita2006@gmail.com"
+git add .
+git commit -m "Cinematic Streamlit portfolio"
+git branch -M main
+git remote add origin https://github.com/pranjalparamita-cloud/portfolio.git
+git push -u origin main
+```
+
+If `git remote add` says `remote origin already exists`, use this instead:
+
+```powershell
+git remote set-url origin https://github.com/pranjalparamita-cloud/portfolio.git
+```
+
+If you see a `>>` prompt, press `Ctrl+C` and run the commands one at a time — PowerShell thinks a quote is unfinished.
+
+When GitHub asks for credentials, sign in with the browser or use a **Personal Access Token** with `repo` access. Never use your account password.
+
+### If you get `Permission denied to ashibabi2007-commits`
+
+That means Windows has cached credentials for a different GitHub account than the repo owner. Clear them and sign in as `pranjalparamita-cloud`:
+
+```powershell
+cmdkey /list | findstr /i github
+cmdkey /delete:git:https://github.com
+git push -u origin main
+```
+
+A GitHub sign-in window should open. Log in with **`pranjalparamita-cloud`**. If asked for a password, generate a **Personal Access Token (classic)** from that account with the `repo` scope and paste the token as the password.
+
+Alternative: from `https://github.com/pranjalparamita-cloud/portfolio/settings/access`, add `ashibabi2007-commits` as a collaborator with **Write** access, then re-run `git push -u origin main`.
 
 ## 2. Deploy on Streamlit Community Cloud
 
 1. Open <https://share.streamlit.io/> and sign in with **GitHub**.
 2. Click **New app**.
 3. Select:
-   - **Repository:** `<YOUR_USERNAME>/<YOUR_REPO>`
+   - **Repository:** `pranjalparamita-cloud/portfolio`
    - **Branch:** `main`
    - **Main file path:** `app.py`
 4. Leave **Advanced settings** empty. There are no secrets to add.

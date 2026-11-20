@@ -44,6 +44,10 @@ def build_html() -> str:
     replacements: dict[str, str] = {
         "PHOTO": data_uri(ASSETS / "photo.jpg"),
         "RESUME_PDF": data_uri(ASSETS / "resume.pdf"),
+        "TRAINING_LEAD": data_uri(ASSETS / "training" / "lead_colab.jpg"),
+        "TRAINING_MIC": data_uri(ASSETS / "training" / "speaker_mic.jpg"),
+        "TRAINING_HANDS": data_uri(ASSETS / "training" / "hands_up.jpg"),
+        "TRAINING_LAB": data_uri(ASSETS / "training" / "lab_wide.jpg"),
     }
     for key in CERT_KEYS:
         replacements[f"CERT_{key.upper()}_IMG"] = data_uri(ASSETS / "certs" / f"{key}.jpg")

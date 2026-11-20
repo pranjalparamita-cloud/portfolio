@@ -304,7 +304,7 @@ html[data-theme="day"] .tag{background:rgba(120,90,220,.07)}
   font-size:10.5px;font-weight:700;cursor:pointer;transition:.2s
 }
 .cert-actions button:hover,.cert-actions a:hover{border-color:var(--violet);color:var(--violet)}
-.cert-actions a.download{border-color:color-mix(in srgb,var(--mint) 40%,transparent);color:var(--mint)}
+.cert-actions .download{border-color:color-mix(in srgb,var(--mint) 40%,transparent);color:var(--mint)}
 
 /* ---------- interview / fun ---------- */
 .interview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-top:44px}
@@ -312,7 +312,7 @@ html[data-theme="day"] .tag{background:rgba(120,90,220,.07)}
 .ask-card,.fun-card{padding:28px}
 .ask-card h3,.fun-card h3{font-family:var(--round);font-size:20px;margin:0 0 14px;letter-spacing:-.025em}
 .chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip{padding:9px 13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:11.5px;font-weight:700;transition:.22s;cursor:default}
+.chip{padding:9px 13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:11.5px;font-weight:700;transition:.22s;cursor:pointer}
 html[data-theme="day"] .chip{background:rgba(255,255,255,.7)}
 .chip:hover{transform:translateY(-3px);border-color:var(--mint);color:var(--mint)}
 details{border-top:1px solid var(--line);padding:13px 0}
@@ -462,6 +462,7 @@ html[data-theme="day"] .stat{background:rgba(255,255,255,.72)}
 .orbit-chip{background:linear-gradient(140deg,rgba(28,10,13,.94),rgba(12,12,14,.94));border-color:rgba(229,9,20,.45);box-shadow:0 16px 40px rgba(0,0,0,.5)}
 html[data-theme="day"] .orbit-chip{background:linear-gradient(140deg,#fff,#fff5f6);border-color:rgba(229,9,20,.28)}
 .orbit-chip i{filter:saturate(1.2)}
+.orbit-chip{cursor:pointer}
 .live-card{background:linear-gradient(120deg,rgba(20,10,12,.94),rgba(10,10,12,.94));border-color:rgba(229,9,20,.38);border-left:3px solid var(--red)}
 html[data-theme="day"] .live-card{background:rgba(255,255,255,.94)}
 .live-card .row{color:var(--red-bright)}
@@ -499,6 +500,52 @@ html[data-theme="day"] .lead{color:#5d5559}
 .humor-note b{color:var(--gold)}
 .tool-chip:hover{color:var(--red-bright);border-color:var(--red)}
 
+/* training program / ML workshop */
+.training-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;margin-top:44px;align-items:stretch}
+@media(max-width:960px){.training-grid{grid-template-columns:1fr}}
+.training-copy{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.training-badge{
+  display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;
+  border:1px solid rgba(229,9,20,.42);background:rgba(229,9,20,.10);
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;font-weight:800;color:var(--red-bright);text-transform:uppercase
+}
+.training-copy h3{font-family:var(--round);font-size:25px;letter-spacing:-.035em;margin:18px 0 10px}
+.training-copy>p{font-size:13.5px;line-height:1.75;color:var(--muted);margin:0 0 16px}
+.training-topics{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.training-topic{padding:7px 10px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:10.5px;font-weight:700}
+html[data-theme="day"] .training-topic{background:rgba(229,9,20,.06)}
+.training-note{
+  padding:14px 15px;border-radius:15px;border:1px dashed rgba(245,197,24,.35);
+  background:linear-gradient(120deg,rgba(229,9,20,.10),rgba(245,197,24,.06));
+  font-size:12px;line-height:1.65;color:var(--muted)
+}
+.training-note b{color:var(--gold)}
+.training-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,235px);gap:12px}
+@media(max-width:620px){.training-gallery{grid-template-columns:1fr;grid-template-rows:repeat(4,245px)}}
+.training-shot{
+  position:relative;margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line-strong);
+  background:#0d0d10;cursor:zoom-in;box-shadow:0 18px 45px rgba(0,0,0,.34);transition:border-color .28s,transform .28s,box-shadow .28s
+}
+.training-shot:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 24px 55px rgba(229,9,20,.20)}
+.training-shot img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) contrast(1.04);transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .4s}
+.training-shot:hover img{transform:scale(1.06);filter:saturate(1.12) contrast(1.03)}
+.training-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.86));pointer-events:none}
+.training-shot figcaption{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;color:#fff;font-size:11.5px;line-height:1.45;font-weight:750;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.training-shot figcaption small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.10em;color:#ffb9bf;margin-bottom:3px;text-transform:uppercase}
+.training-zoom{position:absolute;right:11px;top:11px;z-index:2;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;backdrop-filter:blur(6px)}
+.training-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.training-meta span{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:11px;font-weight:700;color:var(--muted)}
+html[data-theme="day"] .training-meta span{background:rgba(255,255,255,.7)}
+.photo-lightbox{position:fixed;inset:var(--parent-scroll) 0 auto 0;height:var(--viewport-h);z-index:205;display:none;place-items:center;padding:28px;background:rgba(0,0,0,.91);backdrop-filter:blur(14px)}
+.photo-lightbox.open{display:grid}
+.photo-lightbox-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:min(940px,94vw)}
+.photo-lightbox img{max-width:min(880px,90vw);max-height:73vh;object-fit:contain;border-radius:18px;border:1px solid rgba(229,9,20,.48);box-shadow:0 40px 100px rgba(0,0,0,.72);background:#09090b}
+.photo-lightbox-bar{display:flex;align-items:center;gap:14px;flex-wrap:nowrap;justify-content:center;max-width:min(880px,92vw)}
+.photo-lightbox-cap{color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.01em;text-align:center;margin:0;max-width:600px;line-height:1.45}
+.photo-lightbox-count{font-family:var(--mono);font-size:10.5px;color:var(--gold);padding:5px 10px;border-radius:999px;border:1px solid rgba(245,197,24,.38);background:rgba(245,197,24,.10);white-space:nowrap}
+.lb-nav{width:40px;height:40px;flex-shrink:0;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s}
+.lb-nav:hover{background:var(--red);border-color:var(--red)}
+
 /* projects as ranked poster cards */
 .project{
   border-radius:20px;background:linear-gradient(150deg,rgba(30,10,13,.72),rgba(12,12,14,.86));
@@ -535,7 +582,7 @@ html[data-theme="day"] .cert{background:rgba(255,255,255,.88)}
 .cert-thumb{background:linear-gradient(135deg,rgba(229,9,20,.14),rgba(245,197,24,.07))}
 .cert-issuer{color:var(--red-bright)}
 .cert-actions button:hover,.cert-actions a:hover{color:var(--red-bright);border-color:var(--red)}
-.cert-actions a.download{border-color:rgba(245,197,24,.42);color:var(--gold)}
+.cert-actions .download{border-color:rgba(245,197,24,.42);color:var(--gold)}
 
 /* extras */
 .fun-card{background:linear-gradient(145deg,rgba(229,9,20,.14),rgba(245,197,24,.06));border-color:rgba(229,9,20,.30)}
@@ -577,6 +624,7 @@ html[data-theme="day"] .modal{background:#fff}
   <div class="navlinks">
     <a href="#about" data-scroll="about">About</a>
     <a href="#skills" data-scroll="skills">Skills</a>
+    <a href="#training" data-scroll="training">Training</a>
     <a href="#projects" data-scroll="projects">Projects</a>
     <a href="#journey" data-scroll="journey">Journey</a>
     <a href="#certificates" data-scroll="certificates">Awards</a>
@@ -600,7 +648,7 @@ html[data-theme="day"] .modal{background:#fff}
       <p class="hero-sub">A <strong>Data &amp; Business Analyst</strong> who turns rogue spreadsheets into decisions, Python into proof, and “let me check the data” into a personality trait.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" data-scroll="projects">▶ Watch my work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <a class="btn btn-ghost" href="__RESUME_PDF__" download="Pranjal_Paramita_Sahu_Resume.pdf">＋ My résumé <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg></a>
+        <a class="btn btn-ghost" href="__RESUME_PDF__" data-resume download="Pranjal_Paramita_Sahu_Resume.pdf">＋ My résumé <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg></a>
         <button class="btn btn-ghost" id="copyEmail">Copy email</button>
       </div>
       <div class="hero-stats">
@@ -770,6 +818,63 @@ html[data-theme="day"] .modal{background:#fff}
   </div>
 </section>
 
+<section id="training">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">LIVE STUDIO SPECIAL / CODE COMMUNICATORS WORKSHOP</div>
+      <h2 class="title">Training Program on Machine Learning &amp; Its Concepts<span style="color:var(--red-bright)">.</span></h2>
+      <p class="lead">Teaching core ML concepts, Pandas data pipelines, and real notebook workflows to a packed room of laptops — because the best test of knowing a model is explaining it live on a mic.</p>
+    </div>
+
+    <div class="training-grid">
+      <div class="card training-copy reveal">
+        <div class="training-badge"><span class="pulse-dot"></span> Live Classroom · ML Concepts &amp; Hands-On Lab</div>
+        <h3>From raw datasets to working models — live on the big screen.</h3>
+        <p>As part of our Machine Learning training program and technical mentoring initiatives with <strong>Code Communicators</strong>, we took B.Tech peers step-by-step from intuition to execution: loading datasets in Google Colab with Pandas, spotting patterns through EDA, understanding supervised &amp; unsupervised learning concepts, and evaluating models without guesswork.</p>
+        <div class="training-topics">
+          <span class="training-topic">ML Core Concepts</span>
+          <span class="training-topic">Supervised vs. Unsupervised</span>
+          <span class="training-topic">Python &amp; Pandas Live</span>
+          <span class="training-topic">Google Colab Notebooks</span>
+          <span class="training-topic">Feature Engineering &amp; EDA</span>
+          <span class="training-topic">Model Evaluation</span>
+        </div>
+        <div class="training-note">
+          <b>Favourite live-demo moment:</b> Running <code>import pandas as pd</code> and <code>df.head()</code> on the smart board while 40+ laptops follow along — zero slides-only snoozefest, 100% real code and raised hands.
+        </div>
+        <div class="training-meta">
+          <span>🎙️ Concept walkthroughs &amp; Q&amp;A</span>
+          <span>💻 Hands-on Colab coding lab</span>
+          <span>🤝 Peer mentoring &amp; live debugging</span>
+        </div>
+      </div>
+
+      <div class="training-gallery reveal">
+        <figure class="training-shot" data-shot="0" tabindex="0" role="button" aria-label="Open training photo 1">
+          <span class="training-zoom">⤢</span>
+          <img src="__TRAINING_LEAD__" alt="Pranjal walking students through a Google Colab Pandas notebook on the smart screen" style="object-position:center 38%" />
+          <figcaption><small>Scene 01 · Live Notebook Demo</small>Walking through Pandas &amp; dataset preprocessing live on Google Colab</figcaption>
+        </figure>
+        <figure class="training-shot" data-shot="1" tabindex="0" role="button" aria-label="Open training photo 2">
+          <span class="training-zoom">⤢</span>
+          <img src="__TRAINING_MIC__" alt="Pranjal explaining Machine Learning concepts with a microphone" style="object-position:center 22%" />
+          <figcaption><small>Scene 02 · Core Concepts</small>Breaking down Machine Learning intuition &amp; real-world model choices</figcaption>
+        </figure>
+        <figure class="training-shot" data-shot="2" tabindex="0" role="button" aria-label="Open training photo 3">
+          <span class="training-zoom">⤢</span>
+          <img src="__TRAINING_HANDS__" alt="Students raising hands during interactive ML concept check" style="object-position:center 45%" />
+          <figcaption><small>Scene 03 · Interactive Check</small>Hands up across the hall during live ML concept Q&amp;A</figcaption>
+        </figure>
+        <figure class="training-shot" data-shot="3" tabindex="0" role="button" aria-label="Open training photo 4">
+          <span class="training-zoom">⤢</span>
+          <img src="__TRAINING_LAB__" alt="Full classroom of students coding Machine Learning exercises on laptops" style="object-position:center 55%" />
+          <figcaption><small>Scene 04 · Full-House Lab</small>Every bench running code simultaneously during the hands-on session</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
     <div class="reveal">
@@ -783,28 +888,28 @@ html[data-theme="day"] .modal{background:#fff}
         <h3>Syllabus AI — RAG Educational LLM</h3>
         <p>A retrieval-augmented assistant that answers syllabus questions with high precision and generates structured exam content using strict JSON outputs.</p>
         <div class="tags"><span class="tag">Phi-3</span><span class="tag">FAISS</span><span class="tag">LangChain</span><span class="tag">FastAPI</span><span class="tag">Sentence-BERT</span></div>
-        <div class="project-foot"><span class="impact">✦ 98% syllabus-aligned · 0 hallucinations</span><button class="text-link" data-project="syllabus">Project notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <div class="project-foot"><span class="impact">✦ 98% syllabus-aligned · 0 hallucinations</span><button class="text-link" data-project="syllabus">Project notes</button></div>
       </article>
       <article class="project reveal" style="--pc:#5ee6b0">
         <div class="project-top"><div class="project-icon">🎭</div><span class="project-no">S01 · E02</span></div>
         <h3>EQ Analyzer</h3>
         <p>An NLP tool that detects emotional patterns and sentiment in text, then visualizes the emotional fingerprint in a way humans can actually read.</p>
         <div class="tags"><span class="tag">NLP</span><span class="tag">Python</span><span class="tag">Sentiment Analysis</span><span class="tag">Visualization</span></div>
-        <div class="project-foot"><span class="impact">✦ Text → emotion → insight</span><button class="text-link" data-project="eq">Project notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <div class="project-foot"><span class="impact">✦ Text → emotion → insight</span><button class="text-link" data-project="eq">Project notes</button></div>
       </article>
       <article class="project reveal" style="--pc:#65c7ff">
         <div class="project-top"><div class="project-icon">🎧</div><span class="project-no">S01 · E03</span></div>
         <h3>UK Top 50 Analysis</h3>
         <p>A Streamlit dashboard dissecting UK chart trends: artist momentum, collaborations, content diversity and the shape of the music market.</p>
         <div class="tags"><span class="tag">Streamlit</span><span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">Dashboard</span></div>
-        <div class="project-foot"><span class="impact">✦ Interactive analytics app</span><button class="text-link" data-project="uk">Project notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <div class="project-foot"><span class="impact">✦ Interactive analytics app</span><button class="text-link" data-project="uk">Project notes</button></div>
       </article>
       <article class="project reveal" style="--pc:#ffd166">
         <div class="project-top"><div class="project-icon">🚀</div><span class="project-no">S01 · E04 · ONGOING</span></div>
         <h3>EAPLE — ML for EdTech</h3>
         <p>An in-progress machine-learning platform built with a teammate to personalise learning paths and make studying feel less like guessing.</p>
         <div class="tags"><span class="tag">Machine Learning</span><span class="tag">EdTech</span><span class="tag">Collaboration</span><span class="tag">Python</span></div>
-        <div class="project-foot"><span class="impact">✦ Currently in the oven 🍪</span><button class="text-link" data-project="eaple">Project notes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <div class="project-foot"><span class="impact">✦ Currently in the oven 🍪</span><button class="text-link" data-project="eaple">Project notes</button></div>
       </article>
     </div>
   </div>
@@ -898,7 +1003,7 @@ html[data-theme="day"] .modal{background:#fff}
       <p>Internships, full-time roles, freelance dashboards, or a 20-minute chat about whether a pie chart is ever justified — my inbox is open.</p>
       <div class="contact-buttons">
         <a class="btn btn-primary" href="mailto:pranjalparamita2006@gmail.com?subject=Hello%20Pranjal%2C%20let%27s%20talk%20data">Send an email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16v12H4zM4 6l8 7 8-7"/></svg></a>
-        <a class="btn btn-ghost" href="__RESUME_PDF__" download="Pranjal_Paramita_Sahu_Resume.pdf">View résumé <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg></a>
+        <a class="btn btn-ghost" href="__RESUME_PDF__" data-resume download="Pranjal_Paramita_Sahu_Resume.pdf">View résumé <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg></a>
       </div>
       <div class="contact-links">
         <a class="contact-link" href="https://www.linkedin.com/in/pranjal-paramita-sahu-a07b163ab/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -928,10 +1033,23 @@ html[data-theme="day"] .modal{background:#fff}
         <h3 id="modalTitle"></h3>
         <p id="modalText"></p>
         <div class="modal-actions">
-          <a class="btn btn-primary" id="modalDownload" href="#" download>Open / download PDF</a>
+          <button class="btn btn-primary" id="modalOpen">Open PDF ↗</button>
+          <button class="btn btn-ghost" id="modalDownload">Download ↓</button>
           <button class="btn btn-ghost" id="modalClose2">Keep browsing</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
+  <button class="modal-close" id="lbClose" aria-label="Close photo preview">×</button>
+  <div class="photo-lightbox-inner" id="lbInner">
+    <img id="lbImg" src="" alt="Training program photo" />
+    <div class="photo-lightbox-bar">
+      <button class="lb-nav" id="lbPrev" aria-label="Previous photo">‹</button>
+      <span class="photo-lightbox-count" id="lbCount">1 / 4</span>
+      <p class="photo-lightbox-cap" id="lbCap"></p>
+      <button class="lb-nav" id="lbNext" aria-label="Next photo">›</button>
     </div>
   </div>
 </div>
@@ -1003,24 +1121,23 @@ html[data-theme="day"] .modal{background:#fff}
   setInterval(syncScroll,180);
 
   /* ---------- smooth scroll from inside iframe ---------- */
+  function goToSection(id){
+    const target=id==="top"?document.body:document.getElementById(id);
+    if(!target)return;
+    if(embedded){
+      try{
+        const host=scrollHost(), frameEl=frame();
+        const offset=frameEl?frameEl.getBoundingClientRect().top:0;
+        const y=id==="top"?0:host.y+offset+target.getBoundingClientRect().top-92;
+        if(host.el) host.el.scrollTo({top:y,behavior:"smooth"});
+        else pv.scrollTo({top:y,behavior:"smooth"});
+        return;
+      }catch(err){}
+    }
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  }
   document.querySelectorAll("[data-scroll]").forEach(el=>{
-    el.addEventListener("click",e=>{
-      e.preventDefault();
-      const id=el.dataset.scroll;
-      const target=id==="top"?document.body:document.getElementById(id);
-      if(!target)return;
-      if(embedded){
-        try{
-          const host=scrollHost(), frameEl=frame();
-          const offset=frameEl?frameEl.getBoundingClientRect().top:0;
-          const y=id==="top"?0:host.y+offset+target.getBoundingClientRect().top-92;
-          if(host.el) host.el.scrollTo({top:y,behavior:"smooth"});
-          else pv.scrollTo({top:y,behavior:"smooth"});
-          return;
-        }catch(err){}
-      }
-      target.scrollIntoView({behavior:"smooth",block:id==="top"?"start":"start"});
-    });
+    el.addEventListener("click",e=>{e.preventDefault();goToSection(el.dataset.scroll)});
   });
 
   /* ---------- theme ---------- */
@@ -1037,6 +1154,34 @@ html[data-theme="day"] .modal{background:#fff}
   function showToast(msg){
     const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
     clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2300);
+  }
+
+  /* ---------- PDF helpers: open and download embedded files ---------- */
+  function dataUriToBlob(uri){
+    const parts=uri.split(",");
+    const meta=parts[0]||"";
+    const mime=(meta.match(/data:([^;]+)/)||[])[1]||"application/pdf";
+    const raw=atob(parts[1]||"");
+    const bytes=new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
+    return new Blob([bytes],{type:mime});
+  }
+  function downloadDataUri(uri,filename){
+    try{
+      const url=URL.createObjectURL(dataUriToBlob(uri));
+      const a=document.createElement("a");
+      a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),60000);
+      return true;
+    }catch(e){showToast("Download blocked — right-click the PDF link and save it.");return false}
+  }
+  function openPdfUri(uri){
+    try{
+      const url=URL.createObjectURL(dataUriToBlob(uri));
+      const opened=window.open(url,"_blank");
+      if(!opened){showToast("Allow popups to open the PDF, or use the PDF ↓ button.");URL.revokeObjectURL(url);return}
+      setTimeout(()=>URL.revokeObjectURL(url),60000);
+    }catch(e){showToast("Couldn't open the PDF — try the PDF ↓ button.")}
   }
 
   /* ---------- tabs ---------- */
@@ -1063,15 +1208,15 @@ html[data-theme="day"] .modal{background:#fff}
   ];
   const grid=document.getElementById("certGrid");
   grid.innerHTML=certs.map((c,i)=>`
-    <article class="cert reveal" data-cat="${c.cat}" style="transition-delay:${Math.min(i,7)*35}ms">
+    <article class="cert reveal" data-index="${i}" data-cat="${c.cat}" style="transition-delay:${Math.min(i,7)*35}ms">
       <div class="cert-thumb"><img src="${c.img}" alt="${c.title} certificate preview" loading="lazy" /></div>
       <div class="cert-body">
         <div class="cert-issuer">${c.issuer}</div>
         <h3>${c.title}</h3>
         <div class="cert-meta"><span>${c.date}</span><span>${c.score}</span></div>
         <div class="cert-actions">
-          <button data-open="${i}">View proof ↗</button>
-          <a class="download" href="${c.pdf}" download="Pranjal_${c.key}_certificate.pdf">PDF ↓</a>
+          <button data-open="${i}">Quick preview ↗</button>
+          <button class="download" data-download-cert="${i}">PDF ↓</button>
         </div>
       </div>
     </article>`).join("");
@@ -1090,18 +1235,42 @@ html[data-theme="day"] .modal{background:#fff}
 
   /* ---------- modal ---------- */
   const backdrop=document.getElementById("modalBackdrop");
+  let currentCertIndex=-1;
   function openCert(i){
     const c=certs[i];
+    currentCertIndex=i;
     document.getElementById("modalImg").src=c.img;
     document.getElementById("modalIssuer").textContent=c.issuer;
     document.getElementById("modalTitle").textContent=c.title;
     document.getElementById("modalText").textContent=c.text;
-    document.getElementById("modalDownload").href=c.pdf;
-    document.getElementById("modalDownload").download="Pranjal_"+c.key+"_certificate.pdf";
     backdrop.classList.add("open");
   }
   function closeModal(){backdrop.classList.remove("open")}
-  grid.addEventListener("click",e=>{const b=e.target.closest("[data-open]");if(b)openCert(+b.dataset.open)});
+  grid.addEventListener("click",e=>{
+    const dl=e.target.closest("[data-download-cert]");
+    if(dl){
+      e.stopPropagation();
+      const c=certs[+dl.dataset.downloadCert];
+      if(downloadDataUri(c.pdf,"Pranjal_"+c.key+"_certificate.pdf")) showToast("Downloading "+c.title+" 📄");
+      return;
+    }
+    const prev=e.target.closest("[data-open]");
+    if(prev){e.stopPropagation();openCert(+prev.dataset.open);return}
+    const card=e.target.closest(".cert");
+    if(card){
+      const c=certs[+card.dataset.index];
+      openPdfUri(c.pdf);
+      showToast("Opening "+c.title+" ↗");
+    }
+  });
+  document.getElementById("modalOpen").addEventListener("click",()=>{
+    if(currentCertIndex>=0) openPdfUri(certs[currentCertIndex].pdf);
+  });
+  document.getElementById("modalDownload").addEventListener("click",()=>{
+    if(currentCertIndex<0)return;
+    const c=certs[currentCertIndex];
+    if(downloadDataUri(c.pdf,"Pranjal_"+c.key+"_certificate.pdf")) showToast("Downloading "+c.title+" 📄");
+  });
   document.getElementById("modalClose").addEventListener("click",closeModal);
   document.getElementById("modalClose2").addEventListener("click",closeModal);
   backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
@@ -1122,16 +1291,76 @@ html[data-theme="day"] .modal{background:#fff}
       document.getElementById("modalIssuer").textContent="PROJECT NOTES";
       document.getElementById("modalTitle").textContent=title;
       document.getElementById("modalText").innerHTML=notes[key];
+      document.getElementById("modalOpen").style.display="none";
       document.getElementById("modalDownload").style.display="none";
+      currentCertIndex=-1;
       backdrop.classList.add("open");
     });
   });
   const origOpen=openCert;
   openCert=function(i){
     document.getElementById("modalImg").style.display="";
+    document.getElementById("modalOpen").style.display="";
     document.getElementById("modalDownload").style.display="";
     origOpen(i);
   };
+
+  /* ---------- make every clickable-looking thing actually work ---------- */
+  document.querySelectorAll("[data-resume]").forEach(a=>{
+    a.addEventListener("click",e=>{
+      e.preventDefault();
+      if(downloadDataUri(a.getAttribute("href"),"Pranjal_Paramita_Sahu_Resume.pdf")){
+        showToast("Résumé downloaded — go impress someone. 📄");
+      }
+    });
+  });
+
+  function activateTab(name){
+    const btn=document.querySelector('.tabs .tab[data-tab="'+name+'"]');
+    if(btn) btn.click();
+    goToSection("skills");
+  }
+  const chipMap={
+    "Hypothesis testing":{tab:"ai"},
+    "RAG pipelines":{project:"syllabus"},
+    "Power BI DAX":{tab:"bi"},
+    "Data cleaning strategy":{tab:"lang"},
+    "ML evaluation":{tab:"ai"},
+    "SQL window functions":{tab:"lang"},
+    "Dashboard design":{tab:"bi"},
+    "Data storytelling":{tab:"human"},
+    "LLM hallucination control":{project:"syllabus"}
+  };
+  document.querySelectorAll(".chip").forEach(chip=>{
+    chip.setAttribute("role","button");chip.tabIndex=0;
+    const act=()=>{
+      const t=chipMap[chip.textContent.trim()];
+      if(!t)return;
+      if(t.project){
+        const btn=document.querySelector('[data-project="'+t.project+'"]');
+        if(btn) btn.click();
+      }else if(t.tab) activateTab(t.tab);
+    };
+    chip.addEventListener("click",act);
+    chip.addEventListener("keydown",e=>{
+      if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}
+    });
+  });
+
+  const orbitMap={a:{tab:"lang"},b:{tab:"bi"},c:{project:"syllabus"},d:{section:"extras"}};
+  Object.keys(orbitMap).forEach(k=>{
+    const el=document.querySelector(".orbit-chip."+k);
+    if(!el)return;
+    el.setAttribute("role","button");el.tabIndex=0;
+    const act=()=>{
+      const t=orbitMap[k];
+      if(t.project){const btn=document.querySelector('[data-project="'+t.project+'"]');if(btn)btn.click()}
+      else if(t.tab) activateTab(t.tab);
+      else if(t.section) goToSection(t.section);
+    };
+    el.addEventListener("click",act);
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}});
+  });
 
   /* ---------- playful widgets ---------- */
   const bragLines=[
@@ -1196,6 +1425,53 @@ html[data-theme="day"] .modal{background:#fff}
   }
   document.getElementById("copyEmail").addEventListener("click",copyEmail);
   document.getElementById("copyEmail2").addEventListener("click",copyEmail);
+
+  /* ---------- ML training gallery lightbox ---------- */
+  const shots=[...document.querySelectorAll(".training-shot")];
+  const lb=document.getElementById("photoLightbox");
+  const lbImg=document.getElementById("lbImg");
+  const lbCap=document.getElementById("lbCap");
+  const lbCount=document.getElementById("lbCount");
+  let shotIdx=0;
+  function showShot(idx){
+    if(!shots.length)return;
+    shotIdx=(idx+shots.length)%shots.length;
+    const fig=shots[shotIdx];
+    const img=fig.querySelector("img");
+    const cap=fig.querySelector("figcaption");
+    syncScroll();
+    lbImg.src=img?img.src:"";
+    lbImg.alt=img?img.alt:"Training program photo";
+    lbCap.textContent=cap?cap.innerText.trim().replace(/\n+/g," — "):"";
+    lbCount.textContent=(shotIdx+1)+" / "+shots.length;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden","false");
+  }
+  function closeShot(){
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden","true");
+  }
+  shots.forEach((fig,i)=>{
+    fig.addEventListener("click",()=>showShot(i));
+    fig.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showShot(i)}});
+  });
+  document.getElementById("lbClose").addEventListener("click",closeShot);
+  document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();showShot(shotIdx-1)});
+  document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();showShot(shotIdx+1)});
+  lb.addEventListener("click",e=>{if(e.target===lb)closeShot()});
+  window.addEventListener("keydown",e=>{
+    if(!lb.classList.contains("open"))return;
+    if(e.key==="Escape")closeShot();
+    if(e.key==="ArrowLeft")showShot(shotIdx-1);
+    if(e.key==="ArrowRight")showShot(shotIdx+1);
+  });
+
+  document.querySelectorAll(".training-topic").forEach(el=>{
+    el.style.cursor="pointer";el.setAttribute("role","button");el.tabIndex=0;
+    const act=()=>activateTab(el.textContent.includes("Pandas")||el.textContent.includes("Colab")?"lang":"ai");
+    el.addEventListener("click",act);
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}});
+  });
 
   let logoClicks=0;
   document.querySelector(".brand").addEventListener("click",()=>{
